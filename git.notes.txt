@@ -1,0 +1,4 @@
+##understanding the use of 'checkout'
+//the branch after 'checkout' is the branch HEAD is about to point at. e.g.
+   git checkout master
+//which means let HEAD point to 'master' branch.
