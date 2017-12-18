@@ -1,3 +1,2 @@
 //delte all files with name of "*.git"
  find . -name ".git" | xargs rm -Rf
-add one line test
