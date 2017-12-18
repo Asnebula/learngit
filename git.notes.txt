@@ -2,3 +2,7 @@
 //the branch after 'checkout' is the branch HEAD is about to point at. e.g.
    git checkout master
 //which means let HEAD point to 'master' branch.
+
+##problem solved of cannot type in passphrase when using 'tag -s'
+  export GPG_TTY=`tty`
+//execute the command above first, and then 'tag -s'
