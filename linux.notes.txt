@@ -1,0 +1,4 @@
+##set a group the permittion of access /home directory recursivly
+  setfacl -R -m g:home_rx_allowd:rx /home
+##check a user's group infomation
+  id <username>
