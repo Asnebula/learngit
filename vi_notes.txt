@@ -1,0 +1,56 @@
+##In contras you to the beginning of the file; G to the end to regular text editor, you use keys h, j, k, and l instead of 
+## arrow keys to move the cursor.
+         h for left ;l for right
+         j for down ;k for up
+##To navigate the text in terms of words, you can use keys w, b, and e (also   
+## W, B, E in real Vim).
+         w moves to the START of the NEXT word;
+         e moves to the END of the word;
+         b moves to the START of the word.
+##Moving within the text is not limited to individual keys; you can combine
+##movement keys with a number. 
+	For example, 3w is the same as pressing w three  times
+##Youcan insert text multiple times.
+##For example, an underline of a header might consist of 30 -s.
+	------------------------------
+	with command "30i- Esc"
+
+##Tofind and move to the next (or previous) occurrence of a character, use f and F(pre), 
+#e.g. fo finds next o
+##You can combine f with a number. For example, you can find 3rd occurrence of 'q' with 3fq
+
+##In text that is structured with parentheses or brackets, ( or { or [
+## use % to jump to the matching parenthesis or bracket
+
+#To reach the beginning of a line, press 0.
+##For the end of a line, there's $ 
+
+##Find the next occurrence of the word under cursor with *, 
+##and the previous with #
+
+##gg takes you to the beginning of the file; G to the end
+##To jump directly to a specific line, give its line number along with g
+	e.g.  3gg/3G goes to the beginning of line 3;
+
+#Searching text is a vital part of any text editor. In Vim, you press /,
+# and give the text you iare looking for
+# You can repeat the search for next and previous occurrences with n and N, respectively
+
+## To insert text into a new line, press o or O
+#After new line is created, the editor is set to insert mode.
+
+##x and X delete the character under the cursor and to the left of the cursor, respectively.
+
+##When you need to replace only one character under your cursor, without changing to insert mode, use r
+
+##d is the delete command;
+#You can combine it with movement, e.g. dw deletes the first word on the right side of the cursor
+#It also copies the content, so that you can paste it with p to another location
+
+##To repeat the previous command, just press .
+
+##Besides insert and normal mode, Vim has also visual mode
+#Let's see how. 
+	e.g.Goto visual mode with v. Then select a word with e. After you've selected the text, you can delete it with d
+
+##Also don't PANIC! If you make a mistake, press u for undo and ctrl+R for redo
