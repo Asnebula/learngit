@@ -1,0 +1,8 @@
+##################################################
+###       this is a file of IPython notes      ###
+##################################################
+# if you want to run a py script using  %run in Ipython console
+# first SHOULD cd to the directory of ipython 
+# usually C:\Users\Asnebula\.ipython\  then
+     Ipython #start ipython console
+     %run myscript.py #e.g. file,the file is under dir above
