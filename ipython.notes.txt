@@ -6,3 +6,6 @@
 # usually C:\Users\Asnebula\.ipython\  then
      Ipython #start ipython console
      %run myscript.py #e.g. file,the file is under dir above
+# if pip install failed with error of PERMISSION denied,try
+	pip install <libname> --user
+
