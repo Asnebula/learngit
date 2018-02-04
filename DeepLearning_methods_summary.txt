@@ -1,0 +1,23 @@
+基于离散value的方法：
+	Q-learning 	是基于q表(也就是q_value)选择动作的，
+				是一种off-line方法(可以估计，并不一定做该动作)，非常大胆
+	SarSa      	与Q-learning很类似，基于自身经历来学习
+				只不过是一种on-line方法(估计的那个action，就做那个action)，比较胆小
+	DQN			是结合了神经网络和Q-learning的方法，
+				主要解决了q-table过大的问题，交给神经网络估计q-value
+				亮点是记忆库和两套神经网络（experienced learning和fixed target，也就是随机抽经验和不同"时代"参数但同结构的神经网络）
+				升级版DQN：
+					(Double DQN,DQN with Priority,Dueling DQN)
+					分别解决(over estimating,效率，效率问题（sampling 太随机，advantage))
+基于连续动作概率的方法：
+	Policy Gradients 是可以处理连续动作选择问题的方法(基于动作概率)
+				连续动作，用Q的话就会计算量过大而瘫痪
+				回合更新
+基于离散连续结合的方法：
+	Actor Critic 是结合了Policy Gradients和Q的方法，前者回合更新，后者单步更新value更有效率
+				升级版Actor Critic：
+					DDPG		结合了Actor Critic和DQN方法，更有效
+								Actor Critic(Policy Gradients)中输出一个动作不再随机抽而是斩钉截铁选一个
+					A3C			多线程，Actor Critic的效率提升版
+					DPPO		Actor Critic的升级版，解决学习率不能太小(慢)，又不能太大(躁动)的问题，
+								限制了新老策略的更新幅度
