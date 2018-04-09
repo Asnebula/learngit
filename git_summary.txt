@@ -1,8 +1,8 @@
 基础篇
 	1 install Git on Windows
 		安装完成后，需要最后一步设置，在Git Bash里输入
-		$ git config --global user.name "Your Name"
-		$ git config --global user.email "email@example.com"
+		git config --global user.name "Your Name"
+		git config --global user.email "email@example.com"
 	2 create a repository（创建版本库）
 		cd到该目录，输入命令 git init（增加了.git目录）
 	3 添加文件到Git仓库，分两步：
