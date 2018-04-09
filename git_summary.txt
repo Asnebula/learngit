@@ -1,0 +1,95 @@
+基础篇
+	1 install Git on Windows
+		安装完成后，需要最后一步设置，在Git Bash里输入
+		$ git config --global user.name "Your Name"
+		$ git config --global user.email "email@example.com"
+	2 create a repository（创建版本库）
+		cd到该目录，输入命令 git init（增加了.git目录）
+	3 添加文件到Git仓库，分两步：
+		第一步，使用命令git add <file>，注意，可反复多次使用，添加多个文件；
+		第二步，使用命令git commit -m "<description>"，完成。
+	4 查看git状态
+		git status
+	5 查看文件差别
+		git diff <file> 查看文件在工作目录与暂存区的差别。
+						如果还没 add 进暂存区，则查看文件自身修改前后的差别。也可查看和另一分支的区别
+						"-"代表修改前，"+"代表修改后
+		扩展：git diff --cached <file> 查看已经暂存起来的某个文件和上次提交的版本之间的差异
+			  git diff HEAD -- <file>命令可以查看工作区和版本库里面最新版本的区别
+	6 版本回退
+		git log 查看提交记录(主要关注commit_id前几位)
+		git log  --pretty=oneline(更好看点)
+		git reset --hard HEAD^(HEAD^^ HEAD~100)  
+		git reflog 记录每一次命令(回退之后又想前进，但不记得目标版本号时使用)
+	7 撤销修改
+		情景1：git checkout -- <file>丢弃工作区的修改(注意：--很重要，没有--，就变成了"切换到另一个分支"的命令)
+			这里有两种情况：
+			一种是<file>自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；
+			一种是<file>已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态
+		情景2：git reset HEAD file可以把暂存区的修改撤销掉（unstage），重新放回工作区变成了情景1
+	8 删除文件
+		情况1：已经从文件管理器删除，想从repo也删除，用git rm <file>,然后git commit。
+		情况2：文件管理器删错了，想还原，用git checkout -- <file>
+远程仓库篇
+	1 本地库添加到GitHub
+		 git remote add origin git@github.com:<YourGitHubName>/<NewCreatedGitHubRepoName>.git
+	2 推送本地库到远程库
+		git push -u origin master ：实际上是把当前分支master推送到远程
+									-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，
+									还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令
+	3 远程库clone
+		git clone git@github.com:<YourGitHubName>/<GitHubRepoName>.git
+分支管理篇
+	1 创建与合并分支
+		git checkout -b dev：创建并切换到分支dev，相当于下面两条命令：
+			$ git branch dev ：当前节点创建分支dev
+			$ git checkout dev：切换到分支dev
+	2 查看分支
+		git branch:输出结果中带"*"代表当前分支
+	3 合并分支
+		git merge dev:把dev分支合并到当前分支上，默认是Fast-forward方式(master指针指向dev，平行线，看不出做过合并)
+		git merge --no-ff -m "merge with no-ff" dev：非Fast-forward方式,需要一次提交(在dev的基础上提交到master，下三角，看得出做过合并)
+	4 删除分支
+		git branch -d dev
+	5 查看分支合并情况
+		git log --graph --pretty=oneline --abbrev-commit
+	6 bug分支
+		git stash：把当前工作现场"储藏"起来，等以后恢复现场后继续工作
+			(不stash，dev分支先stage <file>，切回master，问题来了，<file>也出现在master！)
+			(如果不stage(add),切到master分支，会丢失dev的修改)
+			储藏起来以后，就可以从比方说master上再拉一个分支先修bug了
+		git stash list：查看储存的工作现场
+		git stash apply 恢复的工作现场，但是stash并没删除，用git stash drop删除
+			或者直接用git stash pop，恢复的同时把stash内容也删了
+		git stash apply stash@{0}主要是用了git stash apply恢复，但是恢复后，stash内容并不删除，（你需要用git stash drop来删除）；
+			这样下次stash有可能就有多个stash在stash list里了
+	7 如果要丢弃一个没有被合并过的分支
+		git branch -D <name>：强行删除。
+	8 多人协作
+		git remote:查看远程库的信息 -v显示更详细的信息
+		git push origin master/dev:推送本地master/dev分支到远程repo
+		git clone git@github.com:<YourGitHubName>/<GitHubRepoName>.git从远程库clone时，默认情况下，你的小伙伴只能看到本地的master分支
+			git checkout -b dev origin/dev:创建远程origin的dev分支到本地
+			git branch --set-upstream dev origin/dev：设置本地dev和远程origin/dev的链接
+			git pull下来origin/dev,然后解决冲突，提交（你和小伙伴都推送，冲突，失败解决）
+标签管理篇
+	1 打标签
+		git branch：查看branch，git checkout master：切换到分支，git tag v1.0：打标签
+		git tag v0.9 6224937：历史提交的commit id，用git log --pretty=oneline --abbrev-commit找commit_id
+	2 查看标签
+		git tag
+	3 查看标签信息
+		git show <tagname>
+	4 还可以创建带有说明的标签，用-a指定标签名，-m指定说明文字
+		git tag -a v0.1 -m "version 0.1 released" 3628164
+		git tag -s v0.2 -m "signed version 0.2 released" fec145a 带私钥签名的标签
+	5 删除标签
+		git tag -d v0.1
+	6 推送某个标签到远程
+		git push origin v1.0
+		git push origin --tags：推送所有标签
+	7 删除远程标签
+		git tag -d v0.9：先本地删除
+		git push origin :refs/tags/v0.9：远程删除
+
+	
