@@ -12,8 +12,8 @@
 		git status
 	5 查看文件差别
 		git diff <file> 查看文件在工作目录与暂存区的差别。
-						如果还没 add 进暂存区，则查看文件自身修改前后的差别。也可查看和另一分支的区别
-						"-"代表修改前，"+"代表修改后
+			如果还没 add 进暂存区，则查看文件自身修改前后的差别。也可查看和另一分支的区别
+			"-"代表修改前，"+"代表修改后
 		扩展：git diff --cached <file> 查看已经暂存起来的某个文件和上次提交的版本之间的差异
 			  git diff HEAD -- <file>命令可以查看工作区和版本库里面最新版本的区别
 	6 版本回退
@@ -35,8 +35,8 @@
 		 git remote add origin git@github.com:<YourGitHubName>/<NewCreatedGitHubRepoName>.git
 	2 推送本地库到远程库
 		git push -u origin master ：实际上是把当前分支master推送到远程
-									-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，
-									还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令
+			-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，
+			还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令
 	3 远程库clone
 		git clone git@github.com:<YourGitHubName>/<GitHubRepoName>.git
 分支管理篇
@@ -72,6 +72,8 @@
 			git checkout -b dev origin/dev:创建远程origin的dev分支到本地
 			git branch --set-upstream-to=origin/dev dev：设置本地dev和远程origin/dev的链接
 			git pull下来origin/dev,然后解决冲突，提交（你和小伙伴都推送，冲突，失败解决）
+		git push origin <local branch>:<origin branch>:把本地branch push到origin，相当于建立远程分支
+		git pull git pull <远程主机名> <远程分支名>:<本地分支名> ：取回远程分支并与本地分支合并
 标签管理篇
 	1 打标签
 		git branch：查看branch，git checkout master：切换到分支，git tag v1.0：打标签
