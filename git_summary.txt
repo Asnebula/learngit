@@ -15,7 +15,8 @@
 			如果还没 add 进暂存区，则查看文件自身修改前后的差别。也可查看和另一分支的区别
 			"-"代表修改前，"+"代表修改后
 		扩展：git diff --cached <file> 查看已经暂存起来的某个文件和上次提交的版本之间的差异
-			  git diff HEAD -- <file>命令可以查看工作区和版本库里面最新版本的区别
+		      git diff HEAD -- <file>命令可以查看工作区和版本库里面最新版本的区别
+		      git diff <local branch> <remote>/<remote branch>可以查看本地库与远程库的区别
 	6 版本回退
 		git log 查看提交记录(主要关注commit_id前几位)
 		git log  --pretty=oneline(更好看点)
