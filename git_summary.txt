@@ -69,6 +69,7 @@
 	8 多人协作
 		git remote:查看远程库的信息 -v显示更详细的信息
 		git push origin master/dev:推送本地master/dev分支到远程repo
+		git push origin <local branch>:<remote branch>
 		git clone git@github.com:<YourGitHubName>/<GitHubRepoName>.git从远程库clone时，默认情况下，你的小伙伴只能看到本地的master分支
 			git checkout -b dev origin/dev:创建远程origin的dev分支到本地
 			git branch --set-upstream-to=origin/dev dev：设置本地dev和远程origin/dev的链接
