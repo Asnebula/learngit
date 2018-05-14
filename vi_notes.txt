@@ -33,7 +33,7 @@
 	e.g.  3gg/3G goes to the beginning of line 3;
 
 #Searching text is a vital part of any text editor. In Vim, you press /,
-# and give the text you iare looking for
+# and give the text you are looking for
 # You can repeat the search for next and previous occurrences with n and N, respectively
 
 ## To insert text into a new line, press o or O
