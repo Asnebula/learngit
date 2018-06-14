@@ -52,5 +52,6 @@
 ##Besides insert and normal mode, Vim has also visual mode
 #Let's see how. 
 	e.g.Goto visual mode with v. Then select a word with e. After you've selected the text, you can delete it with d
+	also you can copy the selected content with y, and use p to paste
 
 ##Also don't PANIC! If you make a mistake, press u for undo and ctrl+R for redo
