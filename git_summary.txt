@@ -68,12 +68,12 @@
 		git branch -D <name>：强行删除。
 	8 多人协作
 		git remote:查看远程库的信息 -v显示更详细的信息
-		git push origin <local branch>:<origin branch>:把本地branch push到origin，相当于建立远程分支
+		git push origin <local branch>:<remote branch>:把本地branch push到远程主机(origin),若只写一个branch是前面的（local）
+		git pull origin <remote branch>:<local branch>:取回远程分支并与本地分支合并,若只写一个branch是前面的（remote）
 		git clone git@github.com:<YourGitHubName>/<GitHubRepoName>.git从远程库clone时，默认情况下，你的小伙伴只能看到本地的master分支
 			git checkout -b dev origin/dev:创建远程origin的dev分支到本地
 			git branch --set-upstream-to=origin/dev dev：设置本地dev和远程origin/dev的链接
 			git pull下来origin/dev,然后解决冲突，提交（你和小伙伴都推送，冲突，失败解决）
-		git pull <远程主机名> <远程分支名>:<本地分支名> ：取回远程分支并与本地分支合并
 标签管理篇
 	1 打标签
 		git branch：查看branch，git checkout master：切换到分支，git tag v1.0：打标签
