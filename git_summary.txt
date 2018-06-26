@@ -52,6 +52,7 @@
 		git merge --no-ff -m "merge with no-ff" dev：非Fast-forward方式,需要一次提交(在dev的基础上提交到master，下三角，看得出做过合并)
 	4 删除分支
 		git branch -d dev
+		git branch -dr <remote>/<branch> :删除远程分支
 	5 查看分支合并情况
 		git log --graph --pretty=oneline --abbrev-commit
 	6 bug分支
