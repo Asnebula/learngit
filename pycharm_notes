@@ -1,0 +1,10 @@
+注册专业版pycharm后，可以使用deployment功能
+1、ctrl+alt+s，搜索deployment,设置server（SFTP）
+2、设置SSH Terminal
+3、建立新的proj，设定python interpreter为远程conda虚拟环境下的python，项目为远程git clone的项目
+4、开启pycharm后，点击tools-start SSH session可以使用“putty”
+5、开启pycharm后，点击tools--deployment-options，可以把.git从exclude中去掉，这样本地也可以识别远程的git了
+6、一般在deployment中设定auto upload （always）
+注意：一些.sh文件从远程download下来git显示修改过是755-->644的原因，暂时不用管
+     要小心line separator（windows/Unix and OS X/classic MAC）
+     小心encoding为UTF-8
