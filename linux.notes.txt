@@ -2,3 +2,5 @@
   setfacl -R -m g:home_rx_allowd:rx /home
 ##check a user's group infomation
   id <username>
+## 查看端口占用的进程pid
+  sudo lsof -i :5432
