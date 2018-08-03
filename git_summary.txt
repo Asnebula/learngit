@@ -99,5 +99,7 @@
 		如果修改了文件，没有add，用git stash将会回到上次commit，故一般git add后git stash
 		如果此时git pull下来还在原分支上改bug，然后commit，push了，此时需要git stash pop
 		但是如果有conflict，将会失败
-		-------------->解决方法:手动解决冲突，然后add，commit一个新的local commit，然后再git pull（自动merge）	
+		-------------->解决方法:手动解决冲突，然后add，commit一个新的local commit，然后再git pull（自动merge）
+	2 有关git commit -a
+		git commit 加上 -a 选项，Git 就会自动把所有已经跟踪过的文件暂存起来一并提交，从而跳过 git add 步骤
 		
