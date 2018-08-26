@@ -1,0 +1,63 @@
+参考 https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001431752945034eb82ac80a3e64b9bb4929b16eeed1eb9000
+1.位置参数（必选参数）在前，默认参数在后
+2.有多个默认参数时，也可以不按顺序提供部分默认参数。当不按顺序提供部分默认参数时，需要把参数名写上
+3.定义默认参数要牢记一点：默认参数必须指向不变对象！
+4.定义可变参数
+	def calc(*numbers):
+		sum = 0
+		for n in numbers:
+			sum = sum + n * n
+		return sum
+  这样就可以这么调用
+	calc(1, 2, 3)，calc(1, 2, 3，4)
+  如果已经有了一个list或tuple，要调用一个可变参数怎么办？可以这样做：
+	nums = [1, 2, 3]
+	calc(*nums)
+	*nums表示把nums这个list的所有元素作为可变参数传进去。
+5.关键字参数
+  可变参数允许你传入0个或任意个参数，这些可变参数在函数调用时自动组装为一个tuple。
+  而关键字参数允许你传入0个或任意个含参数名的参数，这些关键字参数在函数内部自动组装为一个dict。
+	def person(name, age, **kw):
+		print('name:', name, 'age:', age, 'other:', kw)
+  这样就可以这么调用
+	person('Bob', 35, city='Beijing')
+	person('Adam', 45, gender='M', job='Engineer')
+  如果已经有了一个dict，要调用一个可变参数怎么办？可以这样做：
+    extra = {'city': 'Beijing', 'job': 'Engineer'}
+	person('Jack', 24, **extra)
+6.命名关键字参数
+  如果要限制关键字参数的名字，就可以用命名关键字参数，
+  1)例如，只接收city和job作为关键字参数。这种方式定义的函数如下：
+		def person(name, age, *, city, job):
+			print(name, age, city, job)
+  2)如果函数定义中已经有了一个可变参数，后面跟着的命名关键字参数就不再需要一个特殊分隔符*了
+		def person(name, age, *args, city, job):
+			print(name, age, args, city, job)
+  和关键字参数**kw不同，命名关键字参数需要一个特殊分隔符*，*后面的参数被视为命名关键字参数
+	调用方式如下：
+		person('Jack', 24, city='Beijing', job='Engineer')
+  命名关键字参数必须传入参数名，这和位置参数不同。如果没有传入参数名，函数调用将报错
+  
+  命名关键字参数可以有缺省值，从而简化调用：
+		def person(name, age, *, city='Beijing', job):
+			print(name, age, city, job)
+	调用时可不传入city
+		person('Jack', 24, job='Engineer')
+7.参数组合
+  参数定义的顺序必须是：必选参数、默认参数、可变参数、命名关键字参数和关键字参数。
+  神奇例子
+	def f1(a, b, c=0, *args, **kw):
+		print('a =', a, 'b =', b, 'c =', c, 'args =', args, 'kw =', kw)
+
+	def f2(a, b, c=0, *, d, **kw):
+		print('a =', a, 'b =', b, 'c =', c, 'd =', d, 'kw =', kw)
+	  
+	>>> args = (1, 2, 3, 4)
+	>>> kw = {'d': 99, 'x': '#'}
+	>>> f1(*args, **kw)
+	a = 1 b = 2 c = 3 args = (4,) kw = {'d': 99, 'x': '#'}
+	>>> args = (1, 2, 3)
+	>>> kw = {'d': 88, 'x': '#'}
+	>>> f2(*args, **kw)
+	a = 1 b = 2 c = 3 d = 88 kw = {'x': '#'}
+  理论上，对于任意函数，都可以通过类似func(*args, **kw)的形式调用它，无论它的参数是如何定义的
