@@ -1,4 +1,4 @@
-1.关于注解
+### 1.关于注解
 ```
 	def ff(func):
 		def ff2(arg):
@@ -12,7 +12,7 @@
 ```
 	#在ff3的顶部第一行加入@ff相当于执行ff3=ff(ff3)，返回的是一个ff2的函数
 	#所以可以ff3(arg)相当于ff(ff3)(arg);这里把ff3的参数a进行了int转换
-2.关于@wraps
+### 2.关于@wraps
 ```
 	def f1(a):
 		return a+1
@@ -24,7 +24,7 @@
 ```
 	具体来说：如果没有@wraps，那么globals()中是 'f2': <function __main__.f2>,即f2.__name__是f2
 	         如果有@wraps，那么globals()中是 'f2': <function __main__.f1>,即f2.__name__是f1，保持与@wraps(f1)中的参数(这里是f1)相同
-3.更进一步关于wraps的参数
+### 3.更进一步关于wraps的参数
 ```
 	g={'aabfoo':foo,'wraps':wraps,'a5c_processor_arg':_ensure_tuple}
 	l={}
@@ -47,7 +47,7 @@
 		1.赋值(本例)
 		2.@wraps(m)(key:被装饰函数名,value:m[@wraps注解的函数参数])两种方式才会发生不同）详见2
 		3.普通注解详见4
-4.普通注解与加入@wraps的注解
+### 4.普通注解与加入@wraps的注解
 ```
 	def ff(func):
 		def ff2(arg):
@@ -75,7 +75,7 @@
 		return a*3
 ```
 	globals()中会'ff3': <function __main__.ff3>修正了ff2的__name__为func(这里为ff3）
-5.注解中传参
+### 5.注解中传参
 ```
 	def log(text):
 		def decorator(func):
