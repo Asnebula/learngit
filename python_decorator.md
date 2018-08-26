@@ -42,11 +42,11 @@
 ```
 	这里需要说明的是执行完exec(exec_str,g,l)后
 		l中'foo1': <function __main__.foo>} 而不是'foo1': <function __main__.aabfoo>}！，
-		所以wraps最终作用到的是命名空间g中的aabfoo对应的函数而不是aabfoo这个名字 
-	（一般情况下命名空间g/l中函数的key和value是同名的，只有通过
-		1.赋值(本例)
-		2.@wraps(m)(key:被装饰函数名,value:m[@wraps注解的函数参数])两种方式才会发生不同）详见2
-		3.普通注解详见4
+		所以wraps最终作用到的是命名空间g中的aabfoo对应的函数而不是aabfoo这个名字。
+	       （一般情况下命名空间g/l中函数的key和value是同名的，只有通过
+		   1.赋值(本例)
+		   2.@wraps(m)(key:被装饰函数名,value:m[@wraps注解的函数参数])两种方式才会发生不同）详见2
+		   3.普通注解详见4
 ### 4.普通注解与加入@wraps的注解
 ```
 	def ff(func):
