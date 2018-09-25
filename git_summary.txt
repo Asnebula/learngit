@@ -94,6 +94,9 @@
 	7 删除远程标签
 		git tag -d v0.9：先本地删除
 		git push origin :refs/tags/v0.9：远程删除
+	8 拿到某个tag的代码
+		git checkout -b <new_branch_name> <tag_name>
+		对于clone某个tag的代码，可以先clone最新的，然后执行上面的操作，还可以用git tag；git show <tag_name>查看详细信息
 额外篇
 	1 有关git stash
 		如果修改了文件，没有add，用git stash将会回到上次commit，故一般git add后git stash
