@@ -105,4 +105,5 @@
 		-------------->解决方法:手动解决冲突，然后add，commit一个新的local commit，然后再git pull（自动merge）
 	2 有关git commit -a
 		git commit 加上 -a 选项，Git 就会自动把所有已经跟踪过的文件暂存起来一并提交，从而跳过 git add 步骤
+	3 Pycharm的git merge并没有merge .gitignore
 		
