@@ -1,0 +1,7 @@
+######################################
+# generator 两种方式：1.() 2.yield
+# 能用for是iterable
+# 能用next是iterator，不能事先知道长度
+# list dict str 知道长度，不是iterator
+# 但可以用iter变成iterator
+######################################
