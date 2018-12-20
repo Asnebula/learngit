@@ -5,3 +5,22 @@
 # list dict str 知道长度，不是iterator
 # 但可以用iter变成iterator
 ######################################
+
+关于yield from
+>>> def chain(*iterables):
+...     for it in iterables:
+...         for i in it:
+...             yield i
+>>> s = 'ABC'
+>>> t = tuple(range(3))
+>>> list(chain(s, t))
+['A', 'B', 'C', 0, 1, 2]
+
+Python3.3之后引入了新语法：
+>>> def chain(*iterables):
+...     for it in iterables:
+...         yield from it
+...
+>>> list(chain(s, t))
+['A', 'B', 'C', 0, 1, 2]
+## 注：如果要对参数iterables(tuple类型)中的每个元素yield结果进行区分，并行对待，这里会有问题，因为把不同元素的结果写到了一个流里，之后再无法区分了
