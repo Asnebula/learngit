@@ -4,3 +4,7 @@
   id <username>
 ## 查看端口占用的进程pid
   sudo lsof -i :5432
+## add the user to the sudo group: 
+  sudo adduser <username> sudo
+## 将用户<username>从sudo组中移出
+  sudo gpasswd -d <username> sudo 
