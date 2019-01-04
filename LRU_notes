@@ -1,0 +1,18 @@
+## ipython得到帮助的方法
+In [1]: from lru import LRU
+
+In [2]: l=LRU(5)
+
+In [3]: help(l.get_stats())
+
+In [4]: f=l.get_stats
+
+In [5]: help(f)
+
+get_stats(...) method of lru.LRU instance
+    L.get_stats() -> returns a tuple with cache ··hits·· and ··misses··
+
+
+参考：
+https://pypi.org/project/lru-dict/
+https://juejin.im/post/5a9e6835f265da23937697ea
