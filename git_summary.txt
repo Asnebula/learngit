@@ -31,6 +31,7 @@
 	8 删除文件
 		情况1：已经从文件管理器删除，想从repo也删除，用git rm <file>,然后git commit。
 		情况2：文件管理器删错了，想还原，用git checkout -- <file>
+		情况3：仅仅从暂存区/分组删除，本地不删除，用git rm --cached <file>
 远程仓库篇
 	1 本地库添加到GitHub
 		 git remote add origin git@github.com:<YourGitHubName>/<NewCreatedGitHubRepoName>.git
