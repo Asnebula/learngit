@@ -1,0 +1,8 @@
+都可用于将Unix软件移植到Windows(本身就是Unix程序)					windows          posix
+Cygwin:更重视兼容		                     			(需要cygwin.dll)	直接run就行
+MinGW:更重视简化、性能(没有实现fork只有posix系统才有)			(直接调Windows API) 直接run就行(限制:不能调用fork)
+参考：https://zh.wikipedia.org/wiki/MinGW
+
+vagrant:虚拟机"外挂",快速安装虚拟机
+docker:轻量linux"虚拟机(fake)",开源的应用容器引擎
+Cygwin:仅一套软件库，在win NT运行linux工具，更轻量级
