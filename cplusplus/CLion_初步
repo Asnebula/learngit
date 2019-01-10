@@ -1,0 +1,43 @@
+jetbrain家的CLion编写C/C++代码需要一些前提
+以Windows为例
+ 1.首先需要Settings里设置Toolchians，配置环境，可以选择MinGW/Cygwin/Visual Studio,这里我选择了Cygwin，然后Download安装，
+   在setup-x86_64.exe图形界面安装，可以选择需要安装的package（也可以默认next到底，回头再次运行安装包，选择package安装），这里主要安装了
+   make，gcc，g++，gdb作为toolchains中的设置。
+  （cmake比make更高一层，make就是三部曲 $ ./configure $ make  $ make install中的make）
+  这里两个blog比较有参考价值
+      (gcc,make,cmake区别)
+      https://blog.csdn.net/libaineu2004/article/details/77119908
+      (编译器的工作过程)-->第十步(生成安装包)是在三部曲之外的，但是一个完整的编译器应该具有的功能
+      http://www.ruanyifeng.com/blog/2014/11/compiler.html
+ 2.CLion中使用CMake可能需要导入第三方库
+    具体做法参见
+      https://blog.csdn.net/u013870094/article/details/78153408
+    这里是我的引入python的一个CMkeLists.txt的内容
+      cmake_minimum_required(VERSION 2.8.4)
+      project(cpp_demo)
+      
+      set(CMAKE_CXX_STANDARD 11)
+
+      set(SOURCE_FILES embed.c)
+
+      set(INC_DIR /usr/bin/include/python3.6m)
+      set(LINK_DIR /usr/bin/lib/python3.6/config-3.6m)
+
+      include_directories(${INC_DIR})
+      link_directories(${LINK_DIR})
+      link_libraries(python3.6m)
+
+      add_executable(cpp_demo ${SOURCE_FILES})
+ 注:这里我的尝试参考的例子
+      https://github.com/yidao620c/python3-cookbook/blob/master/source/c15/p06_calling_python_from_c.rst
+ 附：1.java是产品,C/C++是标准，目前的C++标准有11,14,17等。
+       这部分参见
+        https://www.zhihu.com/question/37715332
+     2.linux下的cc相当于gcc
+       这部分参见
+        https://www.cnblogs.com/zhouyinhui/archive/2010/02/01/1661078.html
+     3.gcc,g++的区别
+       这部分参见
+        https://www.zhihu.com/question/20940822/answer/16667772
+     4.gdb是unix/linux下的c++调试工具
+        
