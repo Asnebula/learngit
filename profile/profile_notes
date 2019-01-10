@@ -1,0 +1,6 @@
+In Pycharm profile stats
+ 1. Own Time(self) is how much time was spent doing work directly in that function.
+ 2. Time(total) is how much time was spent in that function, and in the functions it called.
+ 3. sum(Own Time)= the whole time spent in the program
+ 4. percentage in Own Time is (Own Time)/sum(Own Time)
+ 5. percentage in Time is (Time)/sum(Own Time)
