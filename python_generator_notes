@@ -7,6 +7,8 @@
 #################################################
 再啰嗦一句：本质上  for-->iterable-->__iter__(如果__iter__合理实现，返回generator比方说，调用了generator的next)
                   next-->iterator-->__next__
+附：itertools参考
+  https://www.kancloud.cn/smilesb101/python3_x/298876
 
 关于yield from
 >>> def chain(*iterables):
